@@ -14,7 +14,7 @@
 #
 
 rm -rf auth_key
-ssh $1.front.sepia.ceph.com sudo -u ceph ssh-keygen -N '' -f /home/ceph/.ssh/id_rsa
+ssh $1.front.sepia.ceph.com ssh-keygen
 scp $1.front.sepia.ceph.com:.ssh/id_rsa.pub auth_key
 scp ed-config.sh $1.front.sepia.ceph.com:ed-config.sh
 ssh $1.front.sepia.ceph.com touch .ssh/config;
@@ -42,3 +42,4 @@ if [ $mver == 'centos' ] || [ $mver == 'redhatenterpriseserver' ] ; then
         done;
     fi
 fi
+echo "=== DONE ==="
