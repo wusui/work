@@ -13,7 +13,8 @@
 
 #echo ',s/requiretty/\!requiretty/; w' | tr \; '\012' | sudo ed -s /etc/sudoers
 sudo useradd -d /home/ceph -m ceph
-echo -e "admin\nadmin" | (sudo passwd --stdin ceph)
+sudo passwd ceph
+#echo -e "admin\nadmin" | (sudo passwd --stdin ceph)
 echo "ceph ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph
 sudo chmod 0440 /etc/sudoers.d/ceph
 xvers=`lsb_release -is | tr '[:upper:]' '[:lower:]'`
