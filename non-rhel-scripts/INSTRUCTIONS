@@ -1,0 +1,15 @@
+This set of scripts sets up ceph clusters for testing.
+
+Get site talking nice to each other:
+    - on Centos, remember to sudo visudo and set !requiretty
+    - run ./talknice.sh vpmXXX.front.sepia.ceph.com vpmYYY.front.sepia.ceph.com
+      to set up ssh communications between the two sites.
+    - ssh to vpmXXX.front.sepia.ceph.com
+    - from vpmXXX, ssh to vpmYYY (make sure communications work).
+    - from vpmYYY, ssh to vpmXXX
+
+Bring up Ceph:
+    ./install.sh vpmXXX vpmYYY installs ceph on vpmYYY from vpmXXX.
+
+Bring up Rgw:
+    ./remotergw.sh vpmXXX vpmYYY installs radosgw on vpmYYY from vpmXXX.
