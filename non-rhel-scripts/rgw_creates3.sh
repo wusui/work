@@ -31,7 +31,7 @@ w
 q
 EOF
 python ${2}test.py
-export IPADDR=`ifconfig | grep "inet addr:" | grep Bcast | sed 's/^ *inet addr://' | sed 's/ .*//'`
+export IPADDR=`/sbin/ifconfig | grep "inet addr:" | grep Bcast | sed 's/^ *inet addr://' | sed 's/ .*//'`
 export SWIFTP=`python getinfo1.py /tmp/swift-${1}`
 echo $IPADDR
 echo $SWIFTP

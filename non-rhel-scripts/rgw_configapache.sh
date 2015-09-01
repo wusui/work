@@ -1,5 +1,5 @@
 #!/bin/bash
-export IPADDR=`ifconfig | grep "inet addr:" | grep Bcast | sed 's/^ *inet addr://' | sed 's/ .*//'`
+export IPADDR=`/sbin/ifconfig | grep "inet addr:" | grep Bcast | sed 's/^ *inet addr://' | sed 's/ .*//'`
 if [ -e /etc/apt/sources.list ]; then
     export CONFFILE="/etc/apache2/apache2.conf"
 else
@@ -19,8 +19,13 @@ if [ -e /etc/apt/sources.list ]; then
     sudo a2enmod fastcgi
     sudo service apache2 start
 else
-    sudo ed ${CONFFILE} << EOF
-g/^Listen 80/s//Listen ${IPADDR}:80/
+    sudo chmod 0777 ${CONFFILE}
+    ed ${CONFFILE} << EOF
+/^Listen 
+.d
+.i
+Listen ${IPADDR}:80
+.
 w
 $
 a
@@ -31,5 +36,6 @@ a
 w
 q
 EOF
+    sudo chmod 0644 ${CONFFILE}
     sudo service httpd start
 fi
