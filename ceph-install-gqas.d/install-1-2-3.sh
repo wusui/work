@@ -1,4 +1,17 @@
 #! /usr/bin/bash
+
+#
+# CEPH_DEPLOY defaults to the ceph-deploy command.
+# CEPH_DEPLOY_MONS is the list of osd nodes.
+# CEPH_DEPLOY_OSDS is the list of osd nodes.
+# CEPH_DEPLOY_DISKS is the list of disks on each osd.
+#
+# Assumption: All OSDs have the same number of disks and these disks have
+# the same dev names.
+#
+# export CEPH_XXX='<What you want>' can be used to change any of the these
+# values.
+#
 CEPH_DEPLOY=${CEPH_DEPLOY:-"ceph-deploy"}
 CEPH_DEPLOY_MONS=${CEPH_DEPLOY_MONS:-"gqas005-priv"}
 CEPH_DEPLOY_OSDS=${CEPH_DEPLOY_OSDS:-"gqas006-priv gqas007-priv"}
