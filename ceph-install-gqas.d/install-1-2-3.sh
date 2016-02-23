@@ -18,7 +18,9 @@ CEPH_DEPLOY_OSDS=${CEPH_DEPLOY_OSDS:-"gqas006-priv gqas007-priv"}
 CEPH_DEPLOY_DISKS=${CEPH_DEPLOY_DISKS:-"sdb sdc sdd sde sdf sdg sdh sdi sdj sdk sdl sdm"}
 $CEPH_DEPLOY new $CEPH_DEPLOY_MONS
 if [ $? -ne 0 ]; then echo 'Error deploy new mons'; fi
-read text
+# These next two lines are needed if you want to fix chooseleaf in ceph.conf
+#echo "edit ceph.conf now:"
+#read text
 $CEPH_DEPLOY install $CEPH_DEPLOY_MONS $CEPH_DEPLOY_OSDS
 if [ $? -ne 0 ]; then echo 'Error installing mons or osds'; fi
 $CEPH_DEPLOY mon create-initial
