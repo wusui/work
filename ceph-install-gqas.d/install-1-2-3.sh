@@ -20,7 +20,7 @@ for i in $CEPH_DEPLOY_OSDS; do
     done
 done
 x=`sudo ceph health`
-while [[ $x == HEALTH_OK* ]]; do
+while [[ $x != HEALTH_OK* ]]; do
     sleep 10
     x=`sudo ceph health`
 done
