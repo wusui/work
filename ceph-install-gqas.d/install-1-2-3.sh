@@ -19,8 +19,19 @@ for i in $CEPH_DEPLOY_OSDS; do
         if [ $? -ne 0 ]; then echo 'Error creating disks'; fi
     done
 done
-x=`sudo ceph health`
+for i in $CEPH_DEPLOY_MONS; do 
+    if [ ! $MON_ONE ];  then
+        MON_ONE=$i
+    fi
+done
+for i in $CEPH_DEPLOY_OSDS; do
+    ssh $i sudo /etc/init.d/ceph stop
+    sleep 2
+    ssh $i sudo /etc/init.d/ceph start
+done
+x=`ssh $MON_ONE sudo ceph health`
 while [[ $x != HEALTH_OK* ]]; do
+    echo $x
     sleep 10
-    x=`sudo ceph health`
+    x=`ssh $MON_ONE sudo ceph health`
 done
