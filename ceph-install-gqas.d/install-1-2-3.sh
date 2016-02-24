@@ -1,5 +1,4 @@
 #! /usr/bin/bash
-
 #
 # CEPH_DEPLOY defaults to the ceph-deploy command.
 # CEPH_DEPLOY_MONS is the list of osd nodes.
