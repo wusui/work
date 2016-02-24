@@ -7,13 +7,14 @@
 #
 CEPH_ISO=${CEPH_ISO:-"rhceph-1.2.3-rhel-7-x86_64.iso"}
 CEPH_HOSTNAME=`hostname`
-mount -o loop $CEPH_ISO /mnt
+sudo umount /mnt
+sudo mount -o loop $CEPH_ISO /mnt
 CEPH_ICE_SETUP=/mnt
 if [ -e /mnt/Installer ]; then
     CEPH_ICE_SETUP=/mnt/Installer
 fi
-yum -y install $CEPH_ICE_SETUP/ice_setup*
-ice_setup -d /mnt << EOF
+sudo yum -y install $CEPH_ICE_SETUP/ice_setup*
+sudo ice_setup -d /mnt << EOF
 yes
 /mnt
 $CEPH_HOSTNAME
