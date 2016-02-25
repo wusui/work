@@ -11,11 +11,11 @@ ssh $1 sudo /etc/init.d/ceph stop
 ssh $1 sudo rm -rf /etc/yum.repos.d/ceph*
 ssh $1 sudo yum -y erase ceph-mon
 ceph-deploy install --repo --release=ceph-osd $1
-ceph-deploy install --osd
+ceph-deploy install --osd $1
 ssh $1 sudo yum -y update
 ssh $1 sudo /etc/init.d/ceph start
 x=`ssh $MON_ONE sudo ceph health`
-while [[ $x != "HEALTH_WARN no*" ]]; do
+while [[ $x != HEALTH_WARN\ no* ]]; do
     echo $x
     sleep 30
     x=`ssh $MON_ONE sudo ceph health`
