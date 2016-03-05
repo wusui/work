@@ -20,6 +20,8 @@ if [ $? -ne 0 ]; then echo 'Error deploy new mons'; fi
 # These next two lines are needed if you want to fix chooseleaf in ceph.conf
 #echo "edit ceph.conf now:"
 #read text
+if [ `echo $CEPH_DEPLOY_OSDS | wc -w` -lt 3  ]; then sed -i 's/^$/osd crush chooseleaf type = 0/' ceph.conf; fi
+
 $CEPH_DEPLOY install $CEPH_DEPLOY_MONS $CEPH_DEPLOY_OSDS
 if [ $? -ne 0 ]; then echo 'Error installing mons or osds'; fi
 $CEPH_DEPLOY mon create-initial
