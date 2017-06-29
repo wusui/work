@@ -64,5 +64,5 @@ There are other variables that can be set if the user so desires.  See ./ansible
 ## Run the ansible-playbook
 
 Run the following command:
-- ansible-playbook -v -i ~/cephmetrics/inventory -e '@~/cephmetrics/vars.yml' playbook.yml
+- ansible-playbook -v -i \~/cephmetrics/inventory -e '@\~/cephmetrics/vars.yml' playbook.yml
 
