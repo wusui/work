@@ -20,6 +20,7 @@ This document contains the installation procedure for cephmetrics released on Ju
 ### Install executables
 
 On the host machine on which you will run ansible-playbook, do the following:
+```
 - sudo su -
 - mkdir ~/cephmetrics
 - subscription-manager repos --enable rhel-7-server-rhscon-2-installer-rpms
@@ -28,6 +29,7 @@ On the host machine on which you will run ansible-playbook, do the following:
 - sed -i -e 's/\[cephmetrics/\[cephmetrics-deps/' cephmetrics-deps.repo
 - curl -L -o cephmetrics.repo https://shaman.ceph.com/api/repos/cephmetrics/master/latest/centos/7/repo/
 - yum install cephmetrics-ansible
+```
 
 ### Edit the inventory file
 
