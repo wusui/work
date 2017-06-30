@@ -31,6 +31,8 @@ On the host machine on which you will run ansible-playbook, do the following:
 - yum install cephmetrics-ansible
 ```
 
+Note: the cephmetrics.repo file needs to be installed on all the ceph cluster hosts as well.
+
 ### Edit the inventory file
 
 A file named ~/cephmetrics/inventory needs to be created.  Ansible-playbook will use this inventory file when installing cephmetrics.  Inventory is an INI-like format file with entries for ceph-grafana and all the parts of the ceph cluster.  Its format looks like:
