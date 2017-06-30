@@ -63,7 +63,7 @@ Omit the mdss section if no ceph mds nodes are installed.  Omit the rgws section
 Vars.yml is used to override defaults used by the ansible installation procedure.  Run the following:
 - echo "devel_mode: false" > ~/cephmetrics/vars.yml
 
-There are other variables that can be set if the user so desires.  See [ansible variables](./ansible/ansible.md) for more information.
+There are other variables that can be set if the user so desires.  See [ansible variables](./ice-icebaby/deploy.sh) for more information.
 
 ## Run the ansible-playbook
 
